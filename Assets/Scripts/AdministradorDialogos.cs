@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AdministradorDialogos : MonoBehaviour
 {
+
+    public Text nombreTexto;
+    public Text textoDialogo;
+
     private Queue<string> frases;
 
 
@@ -14,7 +19,8 @@ public class AdministradorDialogos : MonoBehaviour
 
     public void EmpezarDialogo(Dialogos dialogos)
     {
-        Debug.Log("Empezando conversacion con " + dialogos.nombre);
+
+        nombreTexto.text = dialogos.nombre;
 
         frases.Clear();
 
@@ -35,7 +41,7 @@ public class AdministradorDialogos : MonoBehaviour
         }
 
         string frase = frases.Dequeue();
-        Debug.Log(frase);
+        textoDialogo.text = frase;
     }
 
     public void FinalDialogo()
