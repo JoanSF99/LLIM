@@ -12,6 +12,9 @@ public class AdministradorDialogos : MonoBehaviour
     private Queue<string> frases;
 
 
+    public Animator animator;
+
+
     void Start()
     {
         frases = new Queue<string>();
@@ -20,6 +23,8 @@ public class AdministradorDialogos : MonoBehaviour
     public void EmpezarDialogo(Dialogos dialogos)
     {
 
+        animator.SetBool("IsOpen", true);
+        
         nombreTexto.text = dialogos.nombre;
 
         frases.Clear();
@@ -28,7 +33,6 @@ public class AdministradorDialogos : MonoBehaviour
         {
             frases.Enqueue(frase);
         }
-
         SiguienteFrase();
     }
 
@@ -42,10 +46,22 @@ public class AdministradorDialogos : MonoBehaviour
 
         string frase = frases.Dequeue();
         textoDialogo.text = frase;
+        StopAllCoroutines();
+        StartCoroutine(escribeFrase(frase));
+    }
+
+    IEnumerator escribeFrase(string frase)
+    {
+        textoDialogo.text = "";
+        foreach(char letra in frase.ToCharArray())
+        {
+            textoDialogo.text += letra;
+            yield return null;
+        }
     }
 
     public void FinalDialogo()
     {
-        Debug.Log("Final de la conversacion");
+        animator.SetBool("IsOpen", false);
     }
 }
