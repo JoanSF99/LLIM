@@ -5,7 +5,11 @@ using UnityEngine;
 public class Tubes : MonoBehaviour
 {
     public bool agua;
+    public bool Block;
     public GameObject tube;
+
+    public Tubes fuente;
+
 
     SpriteRenderer sprite;
 
@@ -19,6 +23,28 @@ public class Tubes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Block)
+        {
+            agua = true;
+        }
+        else
+        {
+            if (fuente != null)
+            {
+                if (!fuente.agua)
+                {
+                    fuente = null;
+                    agua = false;
+                }
+
+            }
+            else
+            {
+                agua = false;
+            }
+        }
+        
+
         if (agua)
         {
              sprite.color = new Color(0, 0, 1);
@@ -28,20 +54,37 @@ public class Tubes : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        Tubes t = other.collider.GetComponent<Tubes>();
-        if (t.agua)
+        if (!agua)
         {
-            agua = true;
-            Debug.Log("fluye");
+            Tubes t = other.collider.GetComponent<Tubes>();
+            if (t.agua)
+            {
+                fuente = t;
+                agua = true;
+                Debug.Log("fluye");
+            }
         }
-
+        else
+        {
+            Tubes t = other.collider.GetComponent<Tubes>();
+            if (!t.agua)
+            {
+                t.fuente = this;
+                t.agua = true;
+                Debug.Log("fluye");
+            }
+        }
+        
     }
 
     void OnMouseDown()
     {
-        
-        Debug.Log("rotated");
-       this.transform.Rotate(new Vector3(0,0,90));
-        if (agua) agua = false;
+        if (!Block)
+        {
+            Debug.Log("rotated");
+            this.transform.Rotate(new Vector3(0, 0, 90));
+            fuente = null;
+        }
+
     }
 }
