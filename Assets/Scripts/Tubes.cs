@@ -9,7 +9,7 @@ public class Tubes : MonoBehaviour
     public GameObject tube;
 
     public Tubes fuente;
-
+    public Tubes siguiente;
 
     SpriteRenderer sprite;
 
@@ -69,8 +69,13 @@ public class Tubes : MonoBehaviour
             Tubes t = other.collider.GetComponent<Tubes>();
             if (!t.agua)
             {
+                siguiente = t;
                 t.fuente = this;
                 t.agua = true;
+                if (t.siguiente != null)
+                {
+                    t.siguiente.agua = true;
+                }
                 Debug.Log("fluye");
             }
         }
@@ -84,6 +89,7 @@ public class Tubes : MonoBehaviour
             Debug.Log("rotated");
             this.transform.Rotate(new Vector3(0, 0, 90));
             fuente = null;
+            siguiente = null;
         }
 
     }
