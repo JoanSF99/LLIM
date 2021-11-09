@@ -6,11 +6,9 @@ public class balas : MonoBehaviour
 {
 
     public float launchVelocity = 700f;
-
     Rigidbody2D rb;
-    // Start is called before the first frame update
-    void Start()
-    {
+
+    void Start(){
         rb = GetComponent<Rigidbody2D> ();
         rb.AddRelativeForce(new Vector3 (launchVelocity,0 ,0));
     }
@@ -18,7 +16,7 @@ public class balas : MonoBehaviour
     void OnTriggerEnter2D(Collider2D otro){
         if (otro.gameObject.tag == "cañon" ){
             Debug.Log(otro);
+            Destroy(gameObject);
         }
-        
     }
 }

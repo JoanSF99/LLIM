@@ -6,21 +6,12 @@ public class CañonesEstaticos : MonoBehaviour
 {
 
     public GameObject projectile;
-
+    public GameObject parent;
     public bool cargado = false;
-
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        //detectar colision 
-        //if ()
-        //disparo
-        
         //si pulsa espacio y tiene bala
         if (Input.GetButtonDown("Jump") && cargado) dispara();
     }
