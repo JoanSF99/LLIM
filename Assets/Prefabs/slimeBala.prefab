@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchVelocity: 700
+  flytime: 3
+  "ca\xF1onInicial": {fileID: 0}
 --- !u!58 &8808681050407065571
 CircleCollider2D:
   m_ObjectHideFlags: 0
