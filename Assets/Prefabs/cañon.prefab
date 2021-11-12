@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6505699861239092936}
   - component: {fileID: 6505699861239092943}
   m_Layer: 0
-  m_Name: "ca\xF1onEstatico"
-  m_TagString: "ca\xF1on"
+  m_Name: "ca\xF1on"
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,9 +94,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6505699862647663299}
   - component: {fileID: 6505699862647663308}
-  - component: {fileID: 6505699862647663309}
   - component: {fileID: 8852505390317689760}
   - component: {fileID: 7054980728919741816}
+  - component: {fileID: 4131596630788579677}
   m_Layer: 0
   m_Name: launch_origin
   m_TagString: "ca\xF1on"
@@ -170,21 +170,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6505699862647663309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6505699862647663298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41ba1564fb04cde4c97147384c86da8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 8262962802137311137, guid: 9feb55d25c8aa944d9a2563e1a22f0a6, type: 3}
-  parent: {fileID: 6505699861239092942}
-  cargado: 0
 --- !u!50 &8852505390317689760
 Rigidbody2D:
   serializedVersion: 4
@@ -241,3 +226,22 @@ PolygonCollider2D:
       - {x: -8.878518, y: -3.7077444}
       - {x: -4.5862985, y: -1.7820075}
       - {x: -3.4338224, y: -3.0380633}
+--- !u!114 &4131596630788579677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6505699862647663298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec901e9fbb02614f91e502af143e7c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "ca\xF1on": {fileID: 6505699861239092942}
+  projectile: {fileID: 8262962802137311137, guid: 9feb55d25c8aa944d9a2563e1a22f0a6, type: 3}
+  cargado: 0
+  vel: 0.2
+  giratorio: 0
+  lineal: 0
+  distancia: 10

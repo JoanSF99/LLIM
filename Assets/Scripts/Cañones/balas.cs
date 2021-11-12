@@ -8,22 +8,21 @@ public class balas : MonoBehaviour
     public float launchVelocity = 700f;
     public float flytime = 3f;
     Rigidbody2D rb;
-    CañonesEstaticos ultimo_cañon;
-    public GameObject cañonInicial;
+    Cañones ultimo_cañon;
 
     void Start(){
         rb = GetComponent<Rigidbody2D> ();
         rb.AddRelativeForce(new Vector3 (launchVelocity,0 ,0));
-        cañonInicial = GameObject.Find("cañonEstaticoInicial/launch_origin");
-        ultimo_cañon = cañonInicial.GetComponent<CañonesEstaticos>();
+        //cañonInicial = GameObject.Find("cañonInicial/launch_origin");
+        ultimo_cañon = GameObject.FindWithTag("ultimo").GetComponent<Cañones>();
         Invoke("DestroyBullet",flytime);
     }
 
     void OnTriggerEnter2D(Collider2D otro){
-        if (otro.gameObject.tag == "cañon" ){
-            ultimo_cañon = otro.GetComponent<CañonesEstaticos>();
-            DestroyBullet();
-        }
+        ultimo_cañon.destaggea();
+        ultimo_cañon = otro.GetComponent<Cañones>();
+        ultimo_cañon.tag = "ultimo";
+        DestroyBullet();
     }
 
     void DestroyBullet(){
