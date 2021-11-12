@@ -13,7 +13,6 @@ public class balas : MonoBehaviour
     void Start(){
         rb = GetComponent<Rigidbody2D> ();
         rb.AddRelativeForce(new Vector3 (launchVelocity,0 ,0));
-        //cañonInicial = GameObject.Find("cañonInicial/launch_origin");
         ultimo_cañon = GameObject.FindWithTag("ultimo").GetComponent<Cañones>();
         Invoke("DestroyBullet",flytime);
     }
