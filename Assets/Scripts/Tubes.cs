@@ -5,27 +5,31 @@ using UnityEngine;
 public class Tubes : MonoBehaviour
 {
     public bool agua;
-    public bool Block;
+    public bool start;
+    public bool block;
+    public int id;
+
     public GameObject tube;
 
     public Tubes fuente;
     public Tubes siguiente;
 
-    SpriteRenderer sprite;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         tube.GetComponent<GameObject>();
-        sprite = tube.GetComponent<SpriteRenderer>();
+        animator = tube.GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Block)
+        if (start)
         {
-            agua = true;
+            agua = true; 
         }
         else
         {
@@ -42,21 +46,29 @@ public class Tubes : MonoBehaviour
             {
                 agua = false;
             }
+
+            if (agua && siguiente != null)
+            {
+                siguiente.agua = true;
+                siguiente.fuente = this;
+            }
         }
         
 
         if (agua)
         {
-             sprite.color = new Color(0, 0, 1);
+             animator.SetBool("Agua",true); 
         }
-        else sprite.color = new Color(1, 0, 0);
+        else animator.SetBool("Agua", false);
     }
+
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        Tubes t = other.collider.GetComponent<Tubes>();
         if (!agua)
         {
-            Tubes t = other.collider.GetComponent<Tubes>();
+            
             if (t.agua)
             {
                 fuente = t;
@@ -66,7 +78,7 @@ public class Tubes : MonoBehaviour
         }
         else
         {
-            Tubes t = other.collider.GetComponent<Tubes>();
+            
             if (!t.agua)
             {
                 siguiente = t;
@@ -80,11 +92,14 @@ public class Tubes : MonoBehaviour
             }
         }
         
+        
     }
+
+    
 
     void OnMouseDown()
     {
-        if (!Block)
+        if (!block)
         {
             Debug.Log("rotated");
             this.transform.Rotate(new Vector3(0, 0, 90));
