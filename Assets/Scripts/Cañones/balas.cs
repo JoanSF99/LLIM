@@ -10,6 +10,7 @@ public class balas : MonoBehaviour
     Rigidbody2D rb;
     Cañones ultimo_cañon;
 
+
     void Start(){
         rb = GetComponent<Rigidbody2D> ();
         rb.AddRelativeForce(new Vector3 (launchVelocity,0 ,0));
