@@ -13,6 +13,7 @@ public class Cañones : MonoBehaviour
     public float distancia = 10f;
     float distanciaR = 0f;   
     bool ida = true;
+    public bool invertido;
     
 
     // Update is called once per frame
@@ -31,20 +32,36 @@ public class Cañones : MonoBehaviour
         }
         
         // movimiento lineal ------------------------------
-        else if (lineal && cargado){ 
-            
-            if (distanciaR >= distancia) {
-                ida=false;
-            }
-            else if (distanciaR <= 0) ida = true;
+        else if (lineal && cargado){
+            if (!invertido){
+                if (distanciaR >= distancia) {
+                    ida=false;
+                }
+                else if (distanciaR <= 0) ida = true;
 
-            if (ida){
-                cañon.transform.Translate(0f,velSlow ,0f);
-                distanciaR += velSlow;
+                if (ida){
+                    cañon.transform.Translate(0f,velSlow ,0f);
+                    distanciaR += velSlow;
+                }
+                else if (!ida){
+                    cañon.transform.Translate(0f,-velSlow,0f);
+                    distanciaR -= velSlow;
+                }
             }
-            else if (!ida){
-                cañon.transform.Translate(0f,-velSlow,0f);
-                distanciaR -= velSlow;
+            else {
+                if (distanciaR >= distancia) {
+                    ida=false;
+                }
+                else if (distanciaR <= 0) ida = true;
+
+                if (ida){
+                    cañon.transform.Translate(0f,-velSlow ,0f);
+                    distanciaR += velSlow;
+                }
+                else if (!ida){
+                    cañon.transform.Translate(0f,velSlow,0f);
+                    distanciaR -= velSlow;
+                }
             }
         }
     }
