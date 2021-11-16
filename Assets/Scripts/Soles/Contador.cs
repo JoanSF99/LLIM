@@ -42,6 +42,15 @@ public class Contador : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
+
+        if (health == 0)
+        {
+            SceneManager.LoadScene(0);
+        }
+        if (puntos == 10)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
    void OnTriggerEnter2D(Collider2D target)
