@@ -137,6 +137,7 @@ MonoBehaviour:
   giratorio: 0
   lineal: 0
   distancia: 10
+  invertido: 0
 --- !u!212 &6505699862647663308
 SpriteRenderer:
   m_ObjectHideFlags: 0
