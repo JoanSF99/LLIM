@@ -5,6 +5,8 @@ using UnityEngine;
 public class Prota_Movement : MonoBehaviour
 {
     public float speed = 5.0f;
+    public Animator animator;
+
     Rigidbody2D rigidbody2d;
 
     Vector2 lookDirection = new Vector2(1, 0);
@@ -35,6 +37,10 @@ public class Prota_Movement : MonoBehaviour
         position = position + move * speed * Time.deltaTime;
 
         rigidbody2d.MovePosition(position);
+
+        animator.SetFloat("Horizontal", horizontal);
+        animator.SetFloat("Vertical", vertical);
+        animator.SetFloat("Speed", move.SqrMagnitude());
 
     }
 }
