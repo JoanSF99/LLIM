@@ -7,16 +7,19 @@ public class triggerNPCs : MonoBehaviour
     public Dialogos dialogo;
 
     public GameObject gato1;
-    public GameObject gato2;
+    public GameObject slimeAlcaldeFinal;
+
+    public int indiceEscena;
 
     Vector2 distancia;
 
     private void Update()
     {
-        distancia = gato1.GetComponent<Rigidbody2D>().position - gato2.GetComponent<Rigidbody2D>().position;
+        distancia = gato1.GetComponent<Rigidbody2D>().position - slimeAlcaldeFinal.GetComponent<Rigidbody2D>().position;
 
         if (distancia.magnitude < 1 && Input.GetKeyDown(KeyCode.E)){
             TriggerDialogue();
+            EmpezarJuegos.indiceEscena = indiceEscena;
         }
     }
 
