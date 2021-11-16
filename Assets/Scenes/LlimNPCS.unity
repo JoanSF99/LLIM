@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 138997549}
   - component: {fileID: 138997548}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas dialogos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
     - No me rayes
     - Tira a tu casa tontin
   gato1: {fileID: 352365127}
-  gato2: {fileID: 1854856741}
+  slimeAlcaldeFinal: {fileID: 0}
 --- !u!212 &352365130
 SpriteRenderer:
   m_ObjectHideFlags: 0
