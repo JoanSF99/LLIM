@@ -6,6 +6,7 @@ public class Cañones : MonoBehaviour
 {
     public GameObject cañon;
     public GameObject projectile;
+    //public ParticleSystem particulas;
     public bool cargado = false;
     public float vel = 0.2f;
     public bool giratorio = false;
@@ -68,6 +69,7 @@ public class Cañones : MonoBehaviour
 
     void dispara(){
         GameObject bala = Instantiate(projectile, transform.position ,transform.rotation);
+        //particulas.Play();
         cargado = false;
     }
 
