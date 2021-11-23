@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class balas : MonoBehaviour
 {
@@ -19,10 +20,17 @@ public class balas : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D otro){
-        ultimo_cañon.destaggea();
-        ultimo_cañon = otro.GetComponent<Cañones>();
-        ultimo_cañon.tag = "ultimo";
-        DestroyBullet();
+        if (otro.gameObject.tag == "meta"){
+            DestroyBullet();
+            SceneManager.LoadScene(0);
+        }
+        else{
+            ultimo_cañon.destaggea();
+            ultimo_cañon = otro.GetComponent<Cañones>();
+            ultimo_cañon.tag = "ultimo";
+            DestroyBullet();
+        }
+        
     }
 
     void DestroyBullet(){
