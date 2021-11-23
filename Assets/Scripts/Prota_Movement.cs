@@ -4,43 +4,46 @@ using UnityEngine;
 
 public class Prota_Movement : MonoBehaviour
 {
-    public float speed = 5.0f;
+    public float speed = 2.5f;
     public Animator animator;
 
-    Rigidbody2D rigidbody2d;
+    Rigidbody2D rb;
+
+    Vector2 movement;
 
     Vector2 lookDirection = new Vector2(1, 0);
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody2d = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        //input
+        movement.x = Input.GetAxis("Horizontal");
+        movement.y = Input.GetAxis("Vertical");
 
-        Vector2 move = new Vector2(horizontal, vertical);
+        //Vector2 move = new Vector2(horizontal, vertical);
 
-        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
-        {
-            lookDirection.Set(move.x, move.y);
-            lookDirection.Normalize();
-        }
+        //if (!Mathf.Approximately(movement.x, 0.0f) || !Mathf.Approximately(movement.y, 0.0f))
+        //{
+        //    lookDirection.Set(movement.x, movement.y);
+        //    lookDirection.Normalize();
+        //}
 
-        Vector2 position = rigidbody2d.position;
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.SqrMagnitude());
 
-        position = position + move * speed * Time.deltaTime;
+    }
 
-        rigidbody2d.MovePosition(position);
-
-        animator.SetFloat("Horizontal", horizontal);
-        animator.SetFloat("Vertical", vertical);
-        animator.SetFloat("Speed", move.SqrMagnitude());
-
+    private void FixedUpdate()
+    {
+        //movement
+        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
     }
 }
