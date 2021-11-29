@@ -45,11 +45,11 @@ public class Contador : MonoBehaviour
 
         if (health == 0)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("MJ soles");
         }
-        if (puntos == 10)
+        if (puntos >= 10)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Llim");
         }
     }
 
@@ -57,18 +57,21 @@ public class Contador : MonoBehaviour
     {
         if (target.tag == "Bomba")
         {
+            Destroy(target.gameObject);
             health--;
         }
-    }
-
-    void OnTriggerExit2D(Collider2D target)
-    {
         if (target.tag == "Soles")
         {
             Destroy(target.gameObject);
             puntos++;
         }
+        if (target.tag == "Soles2")
+        {
+            Destroy(target.gameObject);
+            puntos=puntos+2;
+        }
     }
+
 
     IEnumerator WaitTilRestart()
     {
