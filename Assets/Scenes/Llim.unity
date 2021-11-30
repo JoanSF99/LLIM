@@ -1,3 +1,8 @@
 version https://git-lfs.github.com/spec/v1
+<<<<<<< HEAD
+oid sha256:77daf18d73366a8f70ff48978664276734d6cb78965191078376c18de631e4c3
+size 303
+=======
 oid sha256:32a812fd0b23bcb4285aec073526037ca1de7e8a6b8b7cfe54662b8606a53aa5
 size 178990822
+>>>>>>> parent of 6a72584 (Revert "integracion")

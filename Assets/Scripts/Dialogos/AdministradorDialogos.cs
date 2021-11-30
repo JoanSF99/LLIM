@@ -43,11 +43,14 @@ public class AdministradorDialogos : MonoBehaviour
             FinalDialogo();
             return;
         }
+        else 
+        {
+            string frase = frases.Dequeue();
+            textoDialogo.text = frase;
+            StopAllCoroutines();
+            StartCoroutine(escribeFrase(frase));
+        }
 
-        string frase = frases.Dequeue();
-        textoDialogo.text = frase;
-        StopAllCoroutines();
-        StartCoroutine(escribeFrase(frase));
     }
 
     IEnumerator escribeFrase(string frase)
