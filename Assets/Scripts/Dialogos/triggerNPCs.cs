@@ -17,7 +17,7 @@ public class triggerNPCs : MonoBehaviour
     {
         distancia = gato1.GetComponent<Rigidbody2D>().position - slimeAlcaldeFinal.GetComponent<Rigidbody2D>().position;
 
-        if (distancia.magnitude < 5 && Input.GetKeyDown(KeyCode.E)){
+        if (distancia.magnitude < 1 && Input.GetKeyDown(KeyCode.E)){
             TriggerDialogue();
             EmpezarJuegos.indiceEscena = indiceEscena;
         }
